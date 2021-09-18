@@ -33,18 +33,16 @@ process.on('message', (msg) => {
 
 
 const request = require('request');
-const jar = request.jar();
 
 var collectData = function (url) {
     let options = {
         method: 'GET',
         url: 'https://discord.com/api/v9/invites/' + url,
         qs: { with_counts: 'true' },
-        jar: 'JAR'
     };
     request(options, function (error, response, body) {
         if (error)
-            throw new Error(error);
+            return console.log(error);
         body = JSON.parse(body);
         try {
             let data = { "guild": { "name": body.guild.name, "id": body.guild.id, "description": body.guild.description, "verification_level": body.guild.verification_level }, "data": { "total": [body.approximate_member_count], "active": [body.approximate_presence_count], "time": [Date.now()] } };
