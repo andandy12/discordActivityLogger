@@ -7,16 +7,11 @@ html
     meta(name='viewport' content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='/stylesheets/style.css', type='text/css')
   body
-    script(src='javascripts/highcharts/highcharts.js')
-    script(src='javascripts/highcharts/boost.js')
-    script(src='javascripts/highcharts/exporting.js')
+    script(src='https://code.highcharts.com/stock/highstock.js')
+    script(src='https://code.highcharts.com/stock/modules/boost.js')
+    script(src='https://code.highcharts.com/stock/modules/exporting.js')
+    script(src='https://code.highcharts.com/stock/modules/broken-axis.js')
     script(src='javascripts/helper.js')
     figure.highcharts-figure
       #container(data-highcharts-chart='0' style='overflow: hidden;')
-      select#timeSelector(onchange='data()')
-        option(value='86400000') 1 Day
-        option(value='259200000') 3 Days
-        option(value='604800000') 1 Week
-        option(value='1209600000') 2 Weeks
-        option(value='2678400000') 1 Month
       select#serverSelector(onmouseover='updateSelector()' onchange='data()')
